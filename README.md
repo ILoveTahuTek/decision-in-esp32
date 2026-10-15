@@ -45,12 +45,10 @@ decision-in-esp32/
 │   ├── 03-confusion-matrix.png          # Confusion matrix model
 │   ├── 04-visualisasi-decision-tree.png # Struktur pohon keputusan
 │   └── 05-eksperimen-max-depth.png      # Grafik pengaruh max_depth
-├── model/                               # Artefak model hasil notebook
-│   ├── decision_tree_kondisi_tanah.pkl  # Model terlatih (joblib)
-│   ├── class_mapping.json               # Pemetaan label → kode + metadata model
-│   └── tree_rules.txt                   # Aturan keputusan pohon (export_text)
-└── diagram/
-    └── alur-kerja-interaktif.html       # Diagram alur interaktif (buka di browser)
+└── model/                               # Artefak model hasil notebook
+    ├── decision_tree_kondisi_tanah.pkl  # Model terlatih (joblib)
+    ├── class_mapping.json               # Pemetaan label → kode + metadata model
+    └── tree_rules.txt                   # Aturan keputusan pohon (export_text)
 ```
 
 ---
@@ -85,8 +83,6 @@ Jalankan sel dari atas ke bawah secara berurutan (Kernel → Restart & Run All).
 Pipeline lengkap dari perolehan data sampai testing:
 
 ![Alur Kerja Decision Tree](images/alur-kerja.png)
-
-Versi **interaktif** diagram ini tersedia di [`diagram/alur-kerja-interaktif.html`](diagram/alur-kerja-interaktif.html) — unduh file tersebut lalu buka langsung di browser untuk menjelajahi tiap tahapan (mendukung tema gelap/terang, pan/zoom, dan penelusuran jalur).
 
 Pemetaan tahapan notebook ke bagian panduan ini:
 
