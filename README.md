@@ -285,47 +285,6 @@ Pembacaan sensor baru `Suhu=15.0 °C, Kelembapan=1589 ADC, LDR=4000 ADC` dipredi
 
 ---
 
-## 💾 Menggunakan Model Tersimpan
-
-Model akhir diekspor ke [`model/decision_tree_kondisi_tanah.pkl`](model/decision_tree_kondisi_tanah.pkl) sehingga tidak perlu melatih ulang setiap kali ingin memprediksi:
-
-```python
-import joblib
-import pandas as pd
-
-model = joblib.load("model/decision_tree_kondisi_tanah.pkl")
-
-data_baru = pd.DataFrame(
-    [[15.0, 1589, 4000]],
-    columns=["Suhu (C)", "Kelembapan Tanah (ADC)", "LDR (ADC)"]
-)
-pred = model.predict(data_baru)[0]
-
-# Terjemahkan kode kelas kembali ke nama label
-import json
-mapping = json.load(open("model/class_mapping.json"))
-kelas = list(mapping["pemetaan_label"].keys())
-print("Prediksi kondisi tanah:", kelas[pred])
-```
-
-Aturan keputusan lengkap pohon tersedia dalam bentuk teks di [`model/tree_rules.txt`](model/tree_rules.txt):
-
-```text
-|--- Kelembapan Tanah (ADC) <= 1512.50
-|   |--- class: 0                    (Cukup)
-|--- Kelembapan Tanah (ADC) >  1512.50
-|   |--- LDR (ADC) <= 2745.00
-|   |   |--- Suhu (C) <= 30.15
-|   |   |   |--- class: 1            (Defisit Air Ringan)
-|   |   |--- Suhu (C) >  30.15
-|   |   |   |--- class: 2            (Defisit Air Sedang)
-|   ...
-```
-
-Aturan teks ini juga menjadi titik awal yang praktis jika kondisi tanah ingin diklasifikasikan langsung di firmware ESP32 dengan sejumlah perbandingan if/else sederhana.
-
----
-
 ## 📁 Artefak Gambar & Model
 
 Semua visual dan artefak yang dihasilkan notebook:
