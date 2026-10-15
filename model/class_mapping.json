@@ -1,0 +1,31 @@
+{
+  "deskripsi": "Pemetaan label kondisi tanah kaktus ke kode numerik untuk model Decision Tree",
+  "dataset": "Dataset.csv",
+  "fitur": [
+    "Suhu (C)",
+    "Kelembapan Tanah (ADC)",
+    "LDR (ADC)"
+  ],
+  "target": "Keterangan_Encoded",
+  "pemetaan_label": {
+    "Cukup": 0,
+    "Defisit Air Ringan": 1,
+    "Defisit Air Sedang": 2,
+    "Defisit Air Berat": 3
+  },
+  "nama_kelas_urutan": [
+    "Cukup",
+    "Defisit Air Ringan",
+    "Defisit Air Sedang",
+    "Defisit Air Berat"
+  ],
+  "model": {
+    "algoritma": "DecisionTreeClassifier",
+    "criterion": "gini",
+    "random_state": 42,
+    "depth": 7,
+    "n_leaves": 10,
+    "train_accuracy": 1.0,
+    "test_accuracy": 1.0
+  }
+}

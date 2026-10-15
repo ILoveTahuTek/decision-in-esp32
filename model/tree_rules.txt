@@ -1,0 +1,32 @@
+Aturan keputusan DecisionTreeClassifier(gini, random_state=42)
+Dataset: Dataset.csv | Fitur: Suhu (C), Kelembapan Tanah (ADC), LDR (ADC)
+Kelas: 0=Cukup, 1=Defisit Air Ringan, 2=Defisit Air Sedang, 3=Defisit Air Berat
+
+|--- Kelembapan Tanah (ADC) <= 1512.50
+|   |--- class: 0
+|--- Kelembapan Tanah (ADC) >  1512.50
+|   |--- LDR (ADC) <= 2745.00
+|   |   |--- Suhu (C) <= 30.15
+|   |   |   |--- class: 1
+|   |   |--- Suhu (C) >  30.15
+|   |   |   |--- class: 2
+|   |--- LDR (ADC) >  2745.00
+|   |   |--- Suhu (C) <= 34.00
+|   |   |   |--- LDR (ADC) <= 2877.50
+|   |   |   |   |--- Kelembapan Tanah (ADC) <= 2908.50
+|   |   |   |   |   |--- class: 1
+|   |   |   |   |--- Kelembapan Tanah (ADC) >  2908.50
+|   |   |   |   |   |--- class: 2
+|   |   |   |--- LDR (ADC) >  2877.50
+|   |   |   |   |--- Suhu (C) <= 30.15
+|   |   |   |   |   |--- class: 2
+|   |   |   |   |--- Suhu (C) >  30.15
+|   |   |   |   |   |--- LDR (ADC) <= 2996.50
+|   |   |   |   |   |   |--- class: 2
+|   |   |   |   |   |--- LDR (ADC) >  2996.50
+|   |   |   |   |   |   |--- Kelembapan Tanah (ADC) <= 3088.00
+|   |   |   |   |   |   |   |--- class: 2
+|   |   |   |   |   |   |--- Kelembapan Tanah (ADC) >  3088.00
+|   |   |   |   |   |   |   |--- class: 3
+|   |   |--- Suhu (C) >  34.00
+|   |   |   |--- class: 3
